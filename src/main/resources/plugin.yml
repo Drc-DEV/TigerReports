@@ -1,0 +1,51 @@
+name: ${project.name}
+version: ${project.version}
+description: ${project.description}
+api-version: 1.13
+authors: [MrTigreroux, Valentina_pro]
+main: fr.mrtigreroux.tigerreports.TigerReports
+softdepend: [ Vault ]
+commands:
+  tigerreports:
+    description: Informations about TigerReports plugin
+    aliases: [ tigerreport ]
+  report:
+    description: Allows to report a player
+  reports:
+    description: Allows to manage reports
+permissions:
+  tigerreports.*:
+    default: op
+    children:
+      tigerreports.manage: true
+  tigerreports.manage:
+    children:
+      tigerreports.staff.*: true
+  tigerreports.staff.*:
+    children:
+      tigerreports.staff.advanced: true
+      tigerreports.staff.delete: true
+      tigerreports.staff.archive: true
+      tigerreports.staff.teleport: true
+      tigerreports.staff: true
+  tigerreports.staff.advanced:
+    children:
+      tigerreports.staff: true
+  tigerreports.staff.delete:
+    children:
+      tigerreports.staff: true
+  tigerreports.staff.archive.auto:
+    children:
+      tigerreports.staff.archive: true
+  tigerreports.staff.archive:
+    children:
+      tigerreports.staff: true
+  tigerreports.staff.teleport:
+    children:
+      tigerreports.staff: true
+  tigerreports.staff:
+    children:
+      tigerreports.report: true
+  tigerreports.report.exempt:
+    children:
+      tigerreports.report: true
